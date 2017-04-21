@@ -92,19 +92,29 @@
     });
     // pan设置左右触屏滚动
     new Hammer($children[0]).on("panstart", function(ev) {
-    $(document).off('touchstart', touchStart).off('touchmove', touchMove).off('touchend', touchEnd);
+        $(document).off('touchstart', touchStart).off('touchmove', touchMove).off('touchend', touchEnd);
         ev.preventDefault();
     }).on("panmove", function(ev) {
-        var floor = Math.floor((ev.deltaX) / 225),
-            floor1 = floor * 45,
+        if (ev.deltaX > 0) {
+            var floor = Math.ceil((ev.deltaX) / 225);
+        } else {
+            var floor = Math.floor((ev.deltaX) / 225);
+        }
+        var floor1 = floor * 45,
             x = floor1 + swiftDeg;
+        console.log(x)
         $children.css({
             "transition": "transform " + Math.abs(Math.floor(floor)) + "s",
             "transform": " translateZ( " + baseSize * 9.2 + "px) rotateY(" + x + "deg)"
         });
     }).on("panend", function(ev) {
-    $(document).on('touchstart', touchStart).on('touchmove', touchMove).on('touchend', touchEnd);
-        swiftDeg = swiftDeg + Math.floor((ev.deltaX) / 225) * 45;
+        $(document).on('touchstart', touchStart).on('touchmove', touchMove).on('touchend', touchEnd);
+        if (ev.deltaX > 0) {
+            var floor = Math.ceil((ev.deltaX) / 225);
+        } else {
+            var floor = Math.floor((ev.deltaX) / 225);
+        }
+        swiftDeg = swiftDeg + floor * 45;
     });
     </script>
     <script type="text/javascript">
