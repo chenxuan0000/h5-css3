@@ -92,6 +92,7 @@
     });
     // pan设置左右触屏滚动
     new Hammer($children[0]).on("panstart", function(ev) {
+    $(document).off('touchstart', touchStart).off('touchmove', touchMove).off('touchend', touchEnd);
         ev.preventDefault();
     }).on("panmove", function(ev) {
         var floor = Math.floor((ev.deltaX) / 225),
@@ -102,6 +103,7 @@
             "transform": " translateZ( " + baseSize * 9.2 + "px) rotateY(" + x + "deg)"
         });
     }).on("panend", function(ev) {
+    $(document).on('touchstart', touchStart).on('touchmove', touchMove).on('touchend', touchEnd);
         swiftDeg = swiftDeg + Math.floor((ev.deltaX) / 225) * 45;
     });
     </script>
