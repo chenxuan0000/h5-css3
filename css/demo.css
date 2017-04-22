@@ -60,7 +60,7 @@ html {
 
 .title {
     animation: textfromleft .8s .2s forwards;
-    margin: 2rem 0;
+    margin: 1rem 0;
     opacity: 0;
 }
 
@@ -97,7 +97,6 @@ html {
 .stage2 .zhuangbi {
     animation: slideInUp .5s 2.6s forwards;
     opacity: 0;
-    margin: 2rem 0;
 }
 
 .stage2 .jiantou {
