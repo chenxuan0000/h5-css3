@@ -83,7 +83,8 @@
     height: 100%;
     position: absolute;
     transform-style: preserve-3d;
-    transform: translateZ( 2.25rem) rotateX( 0deg) rotateY(45deg) rotateZ(-20deg);
+    transform: translateZ( 2.25rem) rotateX( 0deg) 
+    rotateY(45deg) rotateZ(-20deg);
 }
 /*给每个正方形设置点样式*/
 .cube div {
@@ -130,16 +131,19 @@
 }
 
 .cube .midTop {
-    transform: rotateX( 90deg) rotateY( -45deg) rotateZ( 90deg) translateZ( 2.25rem);
+    transform: rotateX( 90deg) rotateY( -45deg) 
+    rotateZ( 90deg) translateZ( 2.25rem);
     background-color: rgba(219, 224, 235, 0.5);
 }
 /*自定义个旋转动画*/
 @keyframes spining {
     0% {
-        transform: translateZ( 2.25rem) rotateX( 0deg) rotateY( 45deg) rotateZ(-20deg);
+        transform: translateZ( 2.25rem) rotateX( 0deg) 
+        rotateY( 45deg) rotateZ(-20deg);
     }
     100% {
-        transform: translateZ( 2.25rem) rotateX( 0deg) rotateY( -315deg) rotateZ(-20deg);
+        transform: translateZ( 2.25rem) rotateX( 0deg) 
+        rotateY( -315deg) rotateZ(-20deg);
     }
 }
 /*启动动画 匀速 周期6s 无限循环*/
