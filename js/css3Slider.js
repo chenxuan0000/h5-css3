@@ -157,7 +157,7 @@
         containerHeight: '6',
         perspective: '60',
         rotateX: '50%',
-        rotateY: '50%',
+        rotateY: '-50%',
         autoPlay: false,
         hoverParse: true,
         mousewheel: true,

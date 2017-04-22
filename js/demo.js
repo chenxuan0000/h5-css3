@@ -46,11 +46,20 @@
              $curPage.css("transform", translateFormat(0));
          }
      };
+     // 控制页面touch事件的绑定和解绑
+     var controTouch = function($dom) {
+         $dom.on("touchstart", function() {
+             $doc.off('touchstart', touchStart);
+         }).on("touchend", function() {
+             $doc.on('touchstart', touchStart);
+         });
+     };
      //在不同scence上做不同操作
      var startScence = function(scenceID) {
          switch (scenceID) {
              case 'scence2':
                  $.fn.css3Slider();
+                 controTouch($("#css3Slider"));
                  break;
              default:
                  break;
