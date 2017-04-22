@@ -180,8 +180,7 @@ body {
     top: 0;
     left: 0;
     height: 100%;
-    width: 100%;    background: -webkit-gradient(linear, 0% 0%, 0 100%, from(rgb(255, 138, 69)), color-stop(0.4, rgb(255, 81, 70)), to(rgb(255, 81, 70)));
-    /*display: none;*/
+    width: 100%;  
 }
 
 

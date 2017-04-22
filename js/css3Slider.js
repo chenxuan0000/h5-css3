@@ -13,20 +13,21 @@
             pi = Math.PI / length,
             oldIndex = 0,
             newIndex = 0,
+            startX,
+            moveX,
             rotateYDeg = 0,
             swiftDeg = 0,
             panUpDownDeg = 0,
             translateZ = opts.containerWidth / (2 * Math.tan(pi)),
             keyframes = "@keyframes scroll{0% {transform: translateZ( -" + translateZ + "px) rotateY(0deg);}\n" +
-            "100%{transform: translateZ( -" + translateZ + "px) rotateY(360deg);}}";
-
-        $father.height(opts.containerHeight)
-            .width(opts.containerWidth)
-            .css({ 'perspective': opts.perspective + 'px', 'perspectiveOrigin': opts.rotateX + ' ' + opts.rotateY });
-        $children.css("transform", " translateZ( -" + translateZ + "px)");
+            "100%{transform: translateZ( -" + translateZ + "rem) rotateY(360deg);}}";
+        $father
+            .css({ 'width': opts.containerWidth + 'rem', 'height': opts.containerHeight + 'rem', 'perspective': opts.perspective + 'rem', 'perspectiveOrigin': opts.rotateX + ' ' + opts.rotateY });
+        $children.css("transform", " translateZ( -" + translateZ + "rem)");
         $grandson.each(function(i, e) {
-            e.style.transform = 'rotateY( ' + i * deg + 'deg) translateZ( ' + translateZ + 'px)';
+            e.style.transform = 'rotateY( ' + i * deg + 'deg) translateZ( ' + translateZ + 'rem)';
         });
+
         // 动态插入keyframes
         var style = document.createElement('style');
         style.type = 'text/css';
@@ -111,52 +112,79 @@
             };
             $children.on("click", ".animation-child", clickFront);
         };
-        // 算法获取当前对面屏幕位置居高rotateX("+opts.rotateX+") 
-        var getRealRotateX = function(deg) {
-            var x = Math.abs(deg % 360 / 360);
-            // 判断位置变化量
-            if (x === 0.5) {
-                return -1;
-            } else {
-                return (1 - 2 * x);
-            }
-        };
+
         // Hammer 
-        if (opts.swiftMove) {
-            // pan设置左右触屏滚动
-            new Hammer($father[0]).on("panstart", function(ev) {
-                ev.preventDefault();
-            }).on("panmove", function(ev) {
-                var floor = Math.floor((ev.deltaX) / 225),
-                    floor1 = floor * 45,
-                    x = swiftDeg + rotateYDeg + floor1;
-                $children.css({
-                    "transition": "transform " + Math.abs(Math.floor(floor)) + "s",
-                    "transform": " translateZ( -" + translateZ + "px) rotateY(" + x + "deg)"
-                });
-            }).on("panend", function(ev) {
-                swiftDeg = swiftDeg + Math.floor((ev.deltaX) / 225) * 45;
+        // if (opts.swiftMove) {
+        //     // pan设置左右触屏滚动
+        //     new Hammer($father[0]).on("panstart", function(ev) {
+        //         ev.preventDefault();
+        //     }).on("panmove", function(ev) {
+        //         if (ev.deltaX > 0) {
+        //             var floor = Math.ceil((ev.deltaX) / 225);
+        //         } else {
+        //             var floor = Math.floor((ev.deltaX) / 225);
+        //         }
+        //         var floor1 = floor * 45,
+        //             x = swiftDeg + rotateYDeg + floor1;
+        //         $children.css({
+        //             "transition": "transform " + Math.abs(Math.floor(floor)) + "s",
+        //             "transform": " translateZ( -" + translateZ + "rem) rotateY(" + x + "deg)"
+        //         });
+        //     }).on("panend", function(ev) {
+        //         if (ev.deltaX > 0) {
+        //             var floor = Math.ceil((ev.deltaX) / 225);
+        //         } else {
+        //             var floor = Math.floor((ev.deltaX) / 225);
+        //         }
+        //         swiftDeg = swiftDeg + floor * 45;
+        //     });
+
+        //     if (opts.swiftUpDown) {
+        //         var upDown = function(ev) {
+        //             var floor = Math.floor((ev.deltaY) * (-1) / 100);
+        //             panUpDownDeg = panUpDownDeg + floor;
+        //             $children.css("transform", " translateZ( -" + translateZ + ")");
+        //         };
+        //         // pan设置上下触屏翻转
+        //         new Hammer($('body')[0]).on("panup", upDown).on("pandown", upDown);
+        //     }
+
+        // }
+        $father.on("touchstart", function(ev) {
+            startX = ev.touches[0].pageX;
+        }).on("touchmove", function(ev) {
+            var deltaX = ev.touches[0].pageX - startX;
+            if (deltaX > 0) {
+                var floor = Math.ceil((deltaX) / 225);
+            } else {
+                var floor = Math.floor((deltaX) / 225);
+            }
+
+            var floor1 = floor * 45,
+                x = swiftDeg + floor1 * 45;
+            console.log(swiftDeg)
+            $children.css({
+                "transition": "transform " + Math.abs(Math.floor(floor)) + "s",
+                "transform": " translateZ( -" + translateZ + "rem) rotateY(" + x + "deg)"
             });
 
-            if (opts.swiftUpDown) {
-                var upDown = function(ev) {
-                    var floor = Math.floor((ev.deltaY) * (-1) / 100);
-                    panUpDownDeg = panUpDownDeg + floor;
-                    $children.css("transform", " translateZ( -" + translateZ + "px)");
-                };
-                // pan设置上下触屏翻转
-                new Hammer($('body')[0]).on("panup", upDown).on("pandown", upDown);
+            moveX = deltaX;
+        }).on("touchend", function(ev) {
+            if (moveX > 0) {
+                var floor = Math.ceil((moveX) / 225);
+            } else {
+                var floor = Math.floor((moveX) / 225);
             }
-
-        }
+            swiftDeg = swiftDeg + floor * 45;
+        });
 
     };
     // 默认配置参数
     $.fn.css3Slider.defaults = {
         containerId: 'css3Slider',
-        containerWidth: '500',
-        containerHeight: '300',
-        perspective: '1400',
+        containerWidth: '9',
+        containerHeight: '6',
+        perspective: '60',
         rotateX: '50%',
         rotateY: '50%',
         autoPlay: false,

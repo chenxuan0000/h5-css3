@@ -38,381 +38,50 @@
 </head>
 
 <body>
-    <div class="wrapper">
+    <div class="wrapper" id="wrapper">
         <div class="stage stage1" scence="scence1">
             <div class="stars"></div>
             <div class="title">大家好我是新点装逼王</div>
             <div><span class="left">赵</span><span class="right">阳</span></div>
-            <div class="text">老司机开始飙车请系好安全带</div>
+            <div class="text">老司机开始飙车儿童请系好安全带</div>
             <div class="fuqi-img"></div>
-            <div class="shouzhi">哈哈哈 请准备好手纸！！！！！！！</div>
-            <div class="biaoche">下面开始带你们飙车</div>
+            <div class="shouzhi">下面开始带你们飙车</div>
         </div>
         <div class="stage stage2" scence="scence2">
             <div class="stars"></div>
-            <div class="padding-css3">
-                <section class="css3Slider">
-                    <div id="css3Slider" class="figure-father">
-                        <figure>
-                            <img src="img/img1.jpg">
-                        </figure>
-                        <figure>
-                            <img src="img/img2.jpg">
-                        </figure>
-                        <figure>
-                            <img src="img/img3.jpg">
-                        </figure>
-                        <figure>
-                            <img src="img/img4.jpg">
-                        </figure>
-                        <figure>
-                            <img src="img/img5.jpg">
-                        </figure>
-                        <figure>
-                            <img src="img/img6.jpg">
-                        </figure>
-                        <figure>
-                            <img src="img/img7.jpg">
-                        </figure>
-                        <figure>
-                            <img src="img/img8.jpg">
-                        </figure>
-                    </div>
-                </section>
+            <div class="css3Slider" id="css3Slider">
+                <div class="animation-father">
+                    <figure class="animation-child">
+                        <img src="img/img1.jpg">
+                    </figure>
+                    <figure class="animation-child">
+                        <img src="img/img2.jpg">
+                    </figure>
+                    <figure class="animation-child">
+                        <img src="img/img3.jpg">
+                    </figure>
+                    <figure class="animation-child">
+                        <img src="img/img4.jpg">
+                    </figure>
+                    <figure class="animation-child">
+                        <img src="img/img5.jpg">
+                    </figure>
+                    <figure class="animation-child">
+                        <img src="img/img6.jpg">
+                    </figure>
+                    <figure class="animation-child">
+                        <img src="img/img7.jpg">
+                    </figure>
+                    <figure class="animation-child">
+                        <img src="img/img8.jpg">
+                    </figure>
+                </div>
             </div>
         </div>
     </div>
-    <script type="text/javascript" src="js/zepto.min.js"></script>
+    <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="js/hammer.min.js"></script>
-    <script type="text/javascript">
-    var swiftDeg = 0,
-        $children = $("#css3Slider");
-    $children.on("mousedown", function(e) {
-        e.preventDefault();
-    });
-    // pan设置左右触屏滚动
-    new Hammer($children[0]).on("panstart", function(ev) {
-        $(document).off('touchstart', touchStart).off('touchmove', touchMove).off('touchend', touchEnd);
-        ev.preventDefault();
-    }).on("panmove", function(ev) {
-        if (ev.deltaX > 0) {
-            var floor = Math.ceil((ev.deltaX) / 225);
-        } else {
-            var floor = Math.floor((ev.deltaX) / 225);
-        }
-        var floor1 = floor * 45,
-            x = floor1 + swiftDeg;
-        console.log(x)
-        $children.css({
-            "transition": "transform " + Math.abs(Math.floor(floor)) + "s",
-            "transform": " translateZ( " + baseSize * 9.2 + "px) rotateY(" + x + "deg)"
-        });
-    }).on("panend", function(ev) {
-        $(document).on('touchstart', touchStart).on('touchmove', touchMove).on('touchend', touchEnd);
-        if (ev.deltaX > 0) {
-            var floor = Math.ceil((ev.deltaX) / 225);
-        } else {
-            var floor = Math.floor((ev.deltaX) / 225);
-        }
-        swiftDeg = swiftDeg + floor * 45;
-    });
-    </script>
-    <script type="text/javascript">
-    var wave = (function() {
-        var ctx;
-        var waveImage;
-        var canvasWidth;
-        var canvasHeight;
-        var needAnimate = false;
-
-        function init(callback) {
-            var wave = document.getElementById('wave');
-            var canvas = document.createElement('canvas');
-            canvas.style.cssText = '-webkit-border-radius: 50%;border-radius: 50%;';
-            if (!canvas.getContext) return;
-            ctx = canvas.getContext('2d');
-            canvasWidth = wave.offsetWidth;
-            canvasHeight = wave.offsetHeight;
-            canvas.setAttribute('width', canvasWidth);
-            canvas.setAttribute('height', canvasHeight);
-            wave.appendChild(canvas);
-            waveImage = new Image();
-
-            // ctx.beginPath();
-            // ctx.arc(canvasWidth/2, canvasHeight/2, canvasHeight/2, 0, Math.PI*2, true);
-            // ctx.clip();
-
-            waveImage.onload = function() {
-                waveImage.onload = null;
-                callback();
-            }
-            waveImage.src = 'http://img.t.sinajs.cn/t6/style/images/special/earnings4/stage3_wave.png?id=20160302154318999';
-        }
-
-        function animate() {
-            var waveX = 0;
-            var waveY = 0;
-            var waveX_min = -203;
-            var waveY_max = canvasHeight * 0.9;
-            var requestAnimationFrame =
-                window.requestAnimationFrame ||
-                window.mozRequestAnimationFrame ||
-                window.webkitRequestAnimationFrame ||
-                window.msRequestAnimationFrame ||
-                function(callback) {
-                    window.setTimeout(callback, 1000 / 60);
-                };
-
-            function loop() {
-                ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-                if (!needAnimate) return;
-                if (waveY < waveY_max) waveY += 1.5;
-                if (waveX < waveX_min) waveX = 0;
-                else waveX -= 3;
-
-                ctx.globalCompositeOperation = 'source-over';
-                ctx.beginPath();
-                ctx.arc(canvasWidth / 2, canvasHeight / 2, canvasHeight / 2, 0, Math.PI * 2, true);
-                ctx.closePath();
-                ctx.fill();
-
-                ctx.globalCompositeOperation = 'source-in';
-                ctx.drawImage(waveImage, waveX, canvasHeight - waveY);
-
-                requestAnimationFrame(loop);
-            }
-            loop();
-        }
-
-        function start() {
-            if (!ctx) return init(start);
-            needAnimate = true;
-            setTimeout(function() {
-                if (needAnimate) animate();
-            }, 3000);
-        }
-
-        function stop() {
-            needAnimate = false;
-        }
-        return {
-            start: start,
-            stop: stop
-        };
-    }())
-    </script>
-    <script type="text/javascript">
-    var $pages = $(".stage");
-    var $currentPage = $pages.eq(0);
-    var $nextPage;
-    var $prevPage;
-    var wrapper = document.querySelector('.wrapper');
-    $pages.hide();
-    $currentPage.show();
-    $('.toswitch').show();
-
-    function $getNextPage() {
-        var next = $currentPage.next(".stage")[0];
-        return next ? $(next) : null;
-    }
-
-    function $getPrevPage() {
-        var prev = $currentPage.prev(".stage")[0];
-        return prev ? $(prev) : null;
-    }
-
-    function translateFormat(y) {
-        return "translate(0, " + y + "px)";
-    }
-
-    function scaleFormat(scale) {
-        scale = 1;
-        return "scale(" + scale + ")";
-    }
-
-    function scrollNum(start, end, during, cb) {
-        var piece = 60;
-        var step = (end - start) * piece / during;
-        if (during - piece > piece) {
-            cb(Math.round(start + step));
-            setTimeout(function() {
-                scrollNum(start + step, end, during - piece, cb);
-            }, piece);
-        } else {
-            cb(end);
-        }
-    }
-
-    var draging = false;
-    var startAtY;
-    var pageHeight;
-    var nowAtY;
-    var transitionEndTimer;
-
-
-
-    function start_scence(scenceID) {
-        if (scenceID === 'scence3') {
-            wave.start();
-        } else {
-            wave.stop();
-        }
-        if (scenceID === 'scence9') {
-            $('.toswitch').hide();
-        } else {
-            $('.toswitch').show();
-        }
-        $('.toshare').hide();
-    }
-
-
-    function transitionEnd() {
-        clearTimeout(transitionEndTimer);
-        $currentPage.removeClass('animate');
-        $currentPage.hide();
-        $currentPage = $(this).show();
-        $(this).off("transitionend", transitionEnd);
-        $(document).on('touchstart', touchStart);
-        wrapper.className = 'wrapper ' + this.getAttribute('scence');
-        start_scence(this.getAttribute('scence'));
-    }
-
-    function touchStart(event) {
-        draging = true;
-        startAtY = event.touches[0].pageY;
-        $nextPage = $getNextPage();
-        $prevPage = $getPrevPage();
-        pageHeight = $(window).height();
-        touchMove(event);
-    }
-
-    function touchEnd(event) {
-        if (!draging) return;
-
-        $currentPage.addClass('animate');
-
-
-        var saveTransitionDelay = 500;
-        var pageEdge = 50;
-
-        var currentMove = nowAtY - startAtY;
-
-        if (currentMove < -1 * pageEdge) {
-
-            if ($nextPage) {
-                $currentPage.css("-webkit-transform", translateFormat(-pageHeight));
-                $nextPage.css("-webkit-transform", translateFormat(0));
-                $nextPage.on("transitionend", transitionEnd);
-                transitionEndTimer = setTimeout(function() {
-                    if ($nextPage) {
-                        $nextPage.trigger("transitionend", transitionEnd);
-                    }
-
-                }, saveTransitionDelay);
-                $(document).off('touchstart', touchStart);
-            } else {
-                $currentPage.css("-webkit-transform", translateFormat(0));
-            }
-
-        } else if (currentMove > pageEdge) {
-            if ($prevPage) {
-                $currentPage.css("-webkit-transform", translateFormat(pageHeight));
-                $prevPage.css("-webkit-transform", translateFormat(0));
-                $prevPage.on("transitionend", transitionEnd);
-                transitionEndTimer = setTimeout(function() {
-                    if ($prevPage) {
-                        $prevPage.trigger("transitionend", transitionEnd);
-                    }
-                }, saveTransitionDelay);
-                $(document).off('touchstart', touchStart);
-            } else {
-                $currentPage.css("-webkit-transform", translateFormat(0));
-            }
-
-
-        }
-        draging = false;
-    }
-
-    function touchMove(event) {
-        event.preventDefault();
-        if (!draging) return;
-        nowAtY = event.touches[0].pageY;
-        var y = nowAtY - startAtY;
-        $currentPage.css("-webkit-transform", translateFormat(y));
-
-    }
-
-    $(document).on('touchstart', touchStart).on('touchmove', touchMove).on('touchend', touchEnd);
-
-
-
-
-    function wheels(event) {
-        var move = event.wheelDelta;
-        var is_mac = /macintosh/.test(ua);
-        var scroll_step = 50;
-        if (is_mac) {
-            scroll_step = 200;
-        }
-        if (Math.abs(move) > scroll_step && !draging) {
-            pageHeight = $(window).height();
-            if (move < 0) {
-                $nextPage = $getNextPage();
-                if ($nextPage) {
-                    $(document).off('mousewheel', wheels);
-                    $currentPage.addClass('animate');
-                    $currentPage.css("-webkit-transform", translateFormat(-pageHeight));
-                    $nextPage.css("-webkit-transform", translateFormat(0));
-                    $nextPage.on("transitionend", transWheelsEnd);
-                    transitionEndTimer = setTimeout(function() {
-                        if ($nextPage) {
-                            $nextPage.trigger("transitionend", transWheelsEnd);
-                        }
-                    }, 500);
-
-                    draging = true;
-                }
-            } else {
-                $prevPage = $getPrevPage();
-                if ($prevPage) {
-                    $(document).off('mousewheel', wheels);
-                    $currentPage.addClass('animate');
-                    $currentPage.css("-webkit-transform", translateFormat(pageHeight));
-                    $prevPage.css("-webkit-transform", translateFormat(0));
-                    $prevPage.on("transitionend", transWheelsEnd);
-                    transitionEndTimer = setTimeout(function() {
-                        if ($prevPage) {
-                            $prevPage.trigger("transitionend", transWheelsEnd);
-                        }
-                    }, 500);
-
-                    draging = true;
-                }
-            }
-        }
-    }
-
-    function transWheelsEnd() {
-        clearTimeout(transitionEndTimer);
-        $currentPage.removeClass('animate');
-        $currentPage.hide();
-
-        $currentPage = $(this).show();
-        $(this).off("transitionend", transWheelsEnd);
-        $(document).on('mousewheel', wheels);
-        wrapper.className = 'wrapper ' + this.getAttribute('scence');
-        draging = false;
-        start_scence(this.getAttribute('scence'));
-    }
-    $(document).on('mousewheel', wheels);
-
-    // document.querySelector('.loading').style.display = 'none';
-    var ua = navigator.userAgent.toLowerCase();
-    if (/msie/.test(ua)) {
-        document.getElementById('browser_tip').style.display = 'block';
-    } else {
-        wrapper.className = 'wrapper scence1';
-    }
-    </script>
+    <script type="text/javascript" src="js/css3Slider.js"></script>
+    <script type="text/javascript" src="js/demo.js"></script>
+  
 </body>
