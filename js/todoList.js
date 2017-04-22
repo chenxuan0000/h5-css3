@@ -61,7 +61,7 @@
     padding: .5rem;
     margin: .5rem;
     width: 34vw;
-    height: 25vh;
+    height: 32vh;
     border: 1px solid #000;
     background: white;
 }
