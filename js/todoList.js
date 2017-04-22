@@ -23,11 +23,10 @@
     color: rgb(222, 222, 222);
     background: rgb(0, 43, 54);
     /* 字也太大了缩小点 */
-    font-size: 0.5rem;
+    font-size: 0.7rem;
 }
 
 /* 文字离边框太近了 */
-
 .styleEditor {
     padding: .5em;
     border: 1px solid;
@@ -36,24 +35,6 @@
     width: 92vw;
     height: 95vh;
 }
-
-/* 代码高亮 */
-.token.selector {
-    color: rgb(133, 153, 0);
-}
-
-.token.property {
-    color: rgb(187, 137, 0);
-}
-
-.token.punctuation {
-    color: yellow;
-}
-
-.token.function {
-    color: rgb(42, 161, 152);
-}
-
 
 /* 在stage4上加点3D效果 */
 .stage4 {
@@ -70,7 +51,6 @@
     /*偏转了 啦远了模糊 回正*/
     transform: rotateY(0) translateZ(0);
 }
-
 
 /* 接下来我给自己准备一个编辑器 
 因为正方形较小我置于右上角 */

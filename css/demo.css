@@ -146,14 +146,25 @@ html {
 }
 
 .payMoney {
+    position: absolute;
+    width: 100vw;
+    top: 50%;
+    margin-top: -1.5rem;
+    height: 3rem;
+    line-height: 3rem;
     font-size: 1.2rem;
-    padding: 3rem 0 3rem 4rem;
-    background-image: url(../img/zhifu.png);
-    background-size: 4rem 3rem;
-    background-position: left center;
-    background-repeat: no-repeat;
     animation: slideInDown .5s 9s forwards;
     opacity: 0;
+    color: #fff;
+    text-align: center;
+}
+
+.payMoney>i {
+    display: inline-block;
+    width: 4rem;
+    height: 3rem;
+    background-image: url(../img/zhifu.png);
+    background-size: 4rem 3rem;
 }
 
 @-webkit-keyframes bounceIn {
@@ -230,12 +241,6 @@ html {
     }
 }
 
-@keyframes changeBg {
-    100% {
-        display: none;
-    }
-}
-
 @keyframes slideInDown {
     0% {
         transform: translateY(-5rem);
@@ -253,7 +258,7 @@ html {
         opacity: 1;
     }
     100% {
-        transform: translateY(-20rem);
+        transform: translateY(-30rem);
         opacity: 1;
     }
 }
@@ -272,4 +277,3 @@ html {
 .showDemo {
     display: none;
 }
-
