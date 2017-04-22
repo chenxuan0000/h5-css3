@@ -20,7 +20,7 @@
      $stage.addClass('hidden');
      $curPage.removeClass('hidden');
 
-$doc.on('touchstart',function(){
+$doc.on('click',function(){
     alert(111)
 })
      //定义写常用的函数
