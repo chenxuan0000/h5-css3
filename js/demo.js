@@ -103,6 +103,7 @@
                          directionNav: false,
                          controlNav: true
                      });
+                     controTouch($("#ipresenter"));
                  }
                  break;
              case 'scence5':
