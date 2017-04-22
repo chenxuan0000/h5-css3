@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/img.css">
     <link rel="stylesheet" href="css/demo.css">
+    <style type="text/css" id="style"></style>
     <title>h5-demo</title>
     <script type="text/javascript">
     if (!document.createElement('canvas').getContext) {
@@ -40,6 +41,9 @@
 <body>
     <div class="wrapper" id="wrapper">
         <div class="stage stage1" scence="scence1">
+            <audio controls="controls" autoplay="true">
+                <source src="djr.mp3" />
+            </audio>
             <div class="stars"></div>
             <div class="title">大家好我是新点装逼王</div>
             <div><span class="left">赵</span><span class="right">阳</span></div>
@@ -84,19 +88,34 @@
             <div class="zbnum2">赵阳</div>
         </div>
         <div class="stage stage3" scence="scence3">
-          <div class="endWords">
-              <p>男优：赵阳</p>
-              <p>女优：凤姐</p>
-              <p>导演：男优自导</p>
-              <p>经费：101.1rmb</p>
-              <p>技术支持：chenxuan</p>
-              <p>技术费用：100rmb--</p>
-              <p>涉及技术:js,jq,css3,h5</p>
-          </div>
-          <span class="payMoney">
+            <div class="parent">
+                <div class="cube">
+                    <div class="front">1</div>
+                    <div class="back">2</div>
+                    <div class="right">3</div>
+                    <div class="left">4</div>
+                    <div class="top">5</div>
+                    <div class="bottom">6</div>
+                    <div class="midTop">7</div>
+                </div>
+            </div>
+        </div>
+        <div class="stage stage4" scence="scence4">
+             <pre><div class="styleEditor" id="content"></div></pre>
+        </div>
+        <div class="stage stage5" scence="scence5">
+            <div class="endWords">
+                <p>男优：赵阳</p>
+                <p>女优：凤姐</p>
+                <p>导演：男优自导</p>
+                <p>经费：101.1rmb</p>
+                <p>技术支持：chenxuan</p>
+                <p>技术费用：100rmb--</p>
+                <p>涉及技术:js,jq,css3,h5</p>
+            </div>
+            <span class="payMoney">
               经费给你打99折
           </span>
-          <div class="bg3"></div>
         </div>
     </div>
     <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
