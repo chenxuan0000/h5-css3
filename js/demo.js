@@ -20,8 +20,8 @@
      $stage.addClass('hidden');
      $curPage.removeClass('hidden');
 
-$doc.click(function(){
-    alert(11111111111)
+$doc.on('tap',function(){
+    alert(111)
 })
      //定义写常用的函数
      var getNextPage = function() {
