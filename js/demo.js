@@ -20,6 +20,9 @@
      $stage.addClass('hidden');
      $curPage.removeClass('hidden');
 
+$doc.click(function(){
+    alert(11111111111)
+})
      //定义写常用的函数
      var getNextPage = function() {
          return $curPage.next(".stage");
@@ -237,7 +240,10 @@
              image = images[imageIndex];
              if (++imageIndex === images.length)
                  imageIndex = 0;
+              // $(image).on("click", imageClickHandler);
              image.addEventListener('click', imageClickHandler);
+
+             // image.addEventListener('touchstart', imageClickHandler);
              container.appendChild(image);
              if (transitionIn !== false) {
                  TweenMax.fromTo(image, 0.75, {
