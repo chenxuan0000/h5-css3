@@ -30,10 +30,10 @@
 .styleEditor {
     padding: .5em;
     border: 1px solid;
-    margin: .5em;
+    margin: 2.5em .5em .5em .5em;
     overflow: auto;
     width: 92vw;
-    height: 95vh;
+    height: 85vh;
 }
 
 /* 在stage4上加点3D效果 */
