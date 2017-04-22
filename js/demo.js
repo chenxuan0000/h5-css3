@@ -88,6 +88,7 @@
                  }
                  break;
              case 'scence4':
+                 $("#container").empty();
                  imgFly();
                  break;
              case 'scence5':
