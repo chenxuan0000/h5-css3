@@ -328,3 +328,50 @@ canvas {
     bottom: 0;
     margin: auto;
 }
+
+
+.sky {
+  height: 100vh;
+  background: #007fd5;
+  position: relative;
+  overflow: hidden;
+  animation: sky_background 50s ease-out infinite;
+  transform: translate3d(0, 0, 0);
+}
+
+.sky .clouds {
+  background: url("../img/cloud_three.png");
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 300%;
+  animation: cloud_one 50s linear infinite;
+  transform: translate3d(0, 0, 0);
+}
+
+
+@keyframes sky_background {
+  0% {
+    background: #007fd5;
+    color: #007fd5
+  }
+  50% {
+    background: #000;
+    color: #a3d9ff
+  }
+  100% {
+    background: #007fd5;
+    color: #007fd5
+  }
+}
+
+
+@keyframes cloud_one {
+  0% {
+    left: 0
+  }
+  100% {
+    left: -200%
+  }
+}

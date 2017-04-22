@@ -87,7 +87,7 @@
                      $.fn.todoList();
                  }
                  break;
-             case 'scence4':
+             case 'scence5':
                  $('.toswitch').hide();
                  break;
              default:
