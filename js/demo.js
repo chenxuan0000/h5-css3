@@ -20,9 +20,6 @@
      $stage.addClass('hidden');
      $curPage.removeClass('hidden');
 
-$doc.on('click',function(){
-    alert(111)
-})
      //定义写常用的函数
      var getNextPage = function() {
          return $curPage.next(".stage");
@@ -240,10 +237,7 @@ $doc.on('click',function(){
              image = images[imageIndex];
              if (++imageIndex === images.length)
                  imageIndex = 0;
-              // $(image).on("click", imageClickHandler);
-             image.addEventListener('click', imageClickHandler);
-
-             // image.addEventListener('touchstart', imageClickHandler);
+             $(image).on("click", imageClickHandler);
              container.appendChild(image);
              if (transitionIn !== false) {
                  TweenMax.fromTo(image, 0.75, {
@@ -347,7 +341,8 @@ $doc.on('click',function(){
              }
              window.CP.exitedLoop(3);
              container.removeChild(image);
-             image.removeEventListener('click', imageClickHandler);
+
+             $(image).off("click", imageClickHandler);
          }
 
          function shatterCompleteHandler() {
