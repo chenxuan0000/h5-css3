@@ -19,8 +19,7 @@
      // 初始化stage
      $stage.addClass('hidden');
      $curPage.removeClass('hidden');
-     // 
-
+     
      //定义写常用的函数
      var getNextPage = function() {
          return $curPage.next(".stage");
@@ -75,6 +74,8 @@
      };
      //在不同scence上做不同操作
      var startScence = function(scenceID) {
+
+         $('.toswitch').show();
          switch (scenceID) {
              case 'scence2':
                  $.fn.css3Slider();
@@ -85,6 +86,9 @@
                      todoListTimes = 0;
                      $.fn.todoList();
                  }
+                 break;
+             case 'scence4':
+                 $('.toswitch').hide();
                  break;
              default:
                  break;
@@ -176,4 +180,3 @@
      }
      $(document).on('mousewheel', wheels);
  }(jQuery));
-

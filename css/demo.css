@@ -167,6 +167,29 @@ html {
     background-size: 4rem 3rem;
 }
 
+/*.toswitch*/
+.toswitch {
+    position: absolute;
+    width: 0.5rem;
+    height: 0.5rem;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAAAv0lEQVQoFYXBMWrCABQA0B+8ipMQaKesreDgYscWhBbc9ADiJrSL4AE8jT2Ap3CwU5bUuL9qDKjV0vciLpiZxd9MfdmYxm3GcqlUbhzXDBXuY8+dwjAuebWVRU1m6y1OPCu144y20ksc6dnpRkUiiYqunV4cWHmKisTCQhIVPas40IiaubW1edQ04px3G01NGx9xzUSuFXtacpO4ZORbGjWpwihODBSyOCNTGMSRvtJj/OJBqR8Hljpxg47P+N8P5hmAoKmWllkAAAAASUVORK5CYII=) 0 0 no-repeat;
+    background-size: 100%;
+    left: 50%;
+    bottom: 0.75rem;
+    transform: translateX(-50%);
+    z-index: 99;
+    animation: toswitchAni 1s ease-out 0s  infinite;
+}
+@-webkit-keyframes toswitchAni {
+    0% {
+        transform: translate(-50%, 0);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(-50%, -100%);
+        opacity: 1;
+    }
+}
 @-webkit-keyframes bounceIn {
     0% {
         transform: scale(0, 0) translateZ(0);
