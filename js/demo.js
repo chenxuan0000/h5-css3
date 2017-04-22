@@ -14,6 +14,7 @@
          $nextPage,
          $prevPage,
          todoListTimes = 1,
+         imgListTimes = 1,
          transitionEndTimer,
          pageHeight;
      // 初始化stage
@@ -85,6 +86,23 @@
                  if (todoListTimes) {
                      todoListTimes = 0;
                      $.fn.todoList();
+                 }
+                 break;
+             case 'scence4':
+                 if (imgListTimes) {
+                     imgListTimes = 0;
+                     $('#ipresenter').iPresenter({
+                         animSpeed: 2000,
+                         timer: '360Bar',
+                         timerDiameter: 60,
+                         timerStroke: 5,
+                         timerPadding: 5,
+                         timerColor: '#000',
+                         timerBg: '#FFF',
+                         timerOpacity: 0.4,
+                         directionNav: false,
+                         controlNav: true
+                     });
                  }
                  break;
              case 'scence5':
